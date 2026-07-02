@@ -814,12 +814,17 @@ document.getElementById('btn-run').addEventListener('click', ()=>{
   statusEl.textContent = 'Ejecutado ✓';
   statusEl.style.color = '#7fd8a4';
 
-  applyFilters({
-    reclamo: selReclamo.value,
-    canal: selCanal.value,
-    tipo: selTipo.value
-  });
+  // Cada clic en "Ejecutar modelo" representa una consulta nueva sobre el
+  // arreglo original `clientes`. Si el usuario había usado antes un chip
+  // de riesgo (🟢🟡🔴) en la pantalla de Resultados, ese filtro quedaba
+  // "pegado" en `currentRiskFilter`: al combinarse con un canal que no
+  // tiene clientes en ese nivel de riesgo, la tabla se veía vacía sin
+  // ninguna explicación. Por eso reseteamos el filtro de riesgo acá.
+  currentRiskFilter = 'all';
+  document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.chip-btn[data-risk="all"]').classList.add('active');
 
+  applyFilters();
   activateView('resultados');
 });
 
@@ -833,13 +838,31 @@ function riskInfo(score){
 let currentRiskFilter = 'all';
 let currentSort = {key:'score', dir:'desc'};
 
-function applyFilters(extra){
-  extra = extra || {};
+// Única función de filtrado de la tabla de resultados.
+// Regla clave: SIEMPRE parte de una copia fresca del arreglo original
+// `clientes` (clientes.slice()), nunca de `rows` de una llamada anterior
+// ni de un resultado ya filtrado. Además lee los <select> directamente
+// del DOM en cada ejecución, en vez de recibir los valores por parámetro:
+// así se elimina cualquier posibilidad de que un llamador (botón "Ejecutar
+// modelo", chip de riesgo, click de orden) pase datos desactualizados o
+// se olvide de pasar alguno de los tres filtros.
+function applyFilters(){
+  const reclamoVal = selReclamo.value; // valores exactos de los <option>: "Todos", "Reembolso", ...
+  const canalVal   = selCanal.value;   // "Todos", "Chat", "Email", "Teléfono", "WhatsApp", "Redes sociales"
+  const tipoVal    = selTipo.value;    // "Todos", "Nuevo", "Recurrente"
+
+  // Copia nueva del arreglo original en cada llamada.
   let rows = clientes.slice();
 
-  if(extra.reclamo && extra.reclamo !== 'Todos') rows = rows.filter(r=>r.reclamo === extra.reclamo);
-  if(extra.canal && extra.canal !== 'Todos') rows = rows.filter(r=>r.canal === extra.canal);
-  if(extra.tipo && extra.tipo !== 'Todos') rows = rows.filter(r=>r.tipoCliente === extra.tipo);
+  if(reclamoVal !== 'Todos'){
+    rows = rows.filter(r => r.reclamo === reclamoVal);
+  }
+  if(canalVal !== 'Todos'){
+    rows = rows.filter(r => r.canal === canalVal);
+  }
+  if(tipoVal !== 'Todos'){
+    rows = rows.filter(r => r.tipoCliente === tipoVal);
+  }
 
   if(currentRiskFilter !== 'all'){
     rows = rows.filter(r=>{
@@ -856,6 +879,20 @@ function applyFilters(extra){
 function renderTable(rows){
   const tbody = document.getElementById('results-body');
   tbody.innerHTML = '';
+
+  // Si la combinación de filtros no deja ningún cliente, mostramos un
+  // mensaje explícito en vez de una tabla vacía sin explicación.
+  if(rows.length === 0){
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="11" style="text-align:center; padding:32px 20px; color:var(--gray-500); font-size:13.5px;">
+          No hay clientes que cumplan con los filtros seleccionados.<br>
+          Probá quitar el filtro de riesgo (🟢🟡🔴) o elegir otra combinación de canal / tipo de reclamo / tipo de cliente.
+        </td>
+      </tr>`;
+    return;
+  }
+
   rows.forEach(r=>{
     const risk = riskInfo(r.score);
     const tr = document.createElement('tr');
@@ -879,7 +916,9 @@ function renderTable(rows){
     `;
     tbody.appendChild(tr);
   });
-  document.querySelector('.chip-btn[data-risk="all"]').textContent = '';
+  // (Se eliminó la línea que vaciaba el texto del chip "Todos" en cada
+  // render: no tenía ningún propósito y rompía la etiqueta "Todos (10)"
+  // apenas se pintaba la tabla por primera vez.)
 }
 
 document.querySelectorAll('.chip-btn').forEach(btn=>{
@@ -887,17 +926,13 @@ document.querySelectorAll('.chip-btn').forEach(btn=>{
     document.querySelectorAll('.chip-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     currentRiskFilter = btn.dataset.risk;
-    applyFilters({
-      reclamo: selReclamo.value,
-      canal: selCanal.value,
-      tipo: selTipo.value
-    });
+    applyFilters();
   });
 });
 
 document.querySelector('th[data-sort]').addEventListener('click', ()=>{
   currentSort.dir = currentSort.dir === 'desc' ? 'asc' : 'desc';
-  applyFilters({ reclamo: selReclamo.value, canal: selCanal.value, tipo: selTipo.value });
+  applyFilters();
 });
 
 // init labels for filter chips with counts
