@@ -32,9 +32,9 @@
     --radius-lg:16px;
     --radius-md:12px;
     --radius-sm:8px;
-    --shadow-sm: 0 1px 2px rgba(15,58,95,0.06);
-    --shadow-md: 0 4px 16px rgba(15,58,95,0.08);
-    --shadow-lg: 0 12px 32px rgba(15,58,95,0.12);
+    --shadow-sm: 0 1px 2px rgba(46,16,101,0.06);
+    --shadow-md: 0 4px 16px rgba(46,16,101,0.08);
+    --shadow-lg: 0 12px 32px rgba(46,16,101,0.12);
   }
 
   *{box-sizing:border-box;}
@@ -63,7 +63,7 @@
     border-bottom:1px solid var(--gray-100);
   }
   .topbar-inner{
-    max-width:1280px; margin:0 auto;
+    max-width:1320px; margin:0 auto;
     display:flex; align-items:center; gap:28px;
     padding:14px 28px;
   }
@@ -114,7 +114,7 @@
   .status-pill .dot{width:7px;height:7px;border-radius:50%; background:var(--red); box-shadow:0 0 0 3px rgba(209,71,62,0.15);}
 
   /* ---------- LAYOUT ---------- */
-  .view{display:none; max-width:1280px; margin:0 auto; padding:36px 28px 80px;}
+  .view{display:none; max-width:1320px; margin:0 auto; padding:36px 28px 80px;}
   .view.active{display:block; animation:fadeUp .35s ease both;}
   @keyframes fadeUp{
     from{opacity:0; transform:translateY(8px);}
@@ -126,7 +126,7 @@
     letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; display:block;
   }
   .page-head h1{font-size:28px; font-weight:800; color:var(--gray-900);}
-  .page-head .sub{color:var(--gray-500); font-size:14.5px; margin-top:6px; max-width:560px;}
+  .page-head .sub{color:var(--gray-500); font-size:14.5px; margin-top:6px; max-width:600px;}
 
   .grid{display:grid; gap:18px;}
   .grid-4{grid-template-columns:repeat(4,1fr);}
@@ -165,7 +165,7 @@
     width:220px; height:220px; border-radius:50%;
     background:radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
   }
-  .hero-copy{position:relative; z-index:1; max-width:600px;}
+  .hero-copy{position:relative; z-index:1; max-width:620px;}
   .hero-copy .eyebrow{color:#dcc9f7;}
   .hero-copy h1{font-size:26px; font-weight:800; margin-bottom:10px;}
   .hero-copy p{font-size:14.5px; line-height:1.6; color:#e6dcf9;}
@@ -223,7 +223,7 @@
   input[type="range"]{
     width:100%; height:5px; border-radius:4px;
     -webkit-appearance:none; appearance:none;
-    background:var(--gray-200,var(--gray-100));
+    background:var(--gray-100);
     background-image: linear-gradient(var(--blue),var(--blue));
     background-repeat:no-repeat;
   }
@@ -237,16 +237,19 @@
   input[type="range"]::-moz-range-thumb{
     width:18px;height:18px;border-radius:50%;
     background:#fff; border:3px solid var(--blue);
-    box-shadow:var(--shadow-sm); cursor:pointer; border:3px solid var(--blue);
+    box-shadow:var(--shadow-sm); cursor:pointer;
   }
-  select, input[type="text"]{
+  select, input[type="text"], input[type="number"]{
     width:100%; padding:10px 12px; border-radius:10px;
     border:1.5px solid var(--gray-300); font-family:inherit;
     font-size:13.5px; font-weight:500; color:var(--gray-900);
+    background:#fff;
+    transition:border-color .15s ease;
+  }
+  select{
     background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8"><path d="M1 1l5 5 5-5" stroke="%237c8797" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat right 12px center;
     appearance:none; -webkit-appearance:none;
     cursor:pointer;
-    transition:border-color .15s ease;
   }
   select:focus, input:focus{border-color:var(--blue);}
   .run-btn{
@@ -255,10 +258,10 @@
     color:#fff; border:none; padding:14px 20px; border-radius:12px;
     font-family:inherit; font-size:14.5px; font-weight:700;
     cursor:pointer; display:flex; align-items:center; justify-content:center; gap:9px;
-    box-shadow:0 8px 20px rgba(46,117,182,0.28);
+    box-shadow:0 8px 20px rgba(109,40,217,0.28);
     transition:transform .12s ease, box-shadow .12s ease;
   }
-  .run-btn:hover{transform:translateY(-1px); box-shadow:0 10px 24px rgba(46,117,182,0.35);}
+  .run-btn:hover{transform:translateY(-1px); box-shadow:0 10px 24px rgba(109,40,217,0.35);}
   .run-btn:active{transform:translateY(0);}
   .run-btn svg{width:16px;height:16px;}
 
@@ -269,13 +272,13 @@
   }
   .params-echo .card-title{color:#b3a0d1;}
   .params-echo .echo-row{
-    display:flex; justify-content:space-between;
+    display:flex; justify-content:space-between; gap:10px;
     font-size:12.5px; padding:9px 0;
     border-bottom:1px solid rgba(255,255,255,0.08);
   }
   .params-echo .echo-row:last-child{border-bottom:none;}
-  .params-echo .echo-key{color:#a190c2;}
-  .params-echo .echo-val{color:#dcc9f7; font-weight:600;}
+  .params-echo .echo-key{color:#a190c2; white-space:nowrap;}
+  .params-echo .echo-val{color:#dcc9f7; font-weight:600; text-align:right;}
   .run-note{
     display:flex; gap:10px; align-items:flex-start;
     background:var(--blue-50); border:1px solid var(--blue-100);
@@ -283,6 +286,7 @@
     font-size:12.5px; color:var(--blue-900); line-height:1.55;
   }
   .run-note svg{width:16px;height:16px; flex-shrink:0; margin-top:1px;}
+  .field-2col{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
 
   /* ---------- PANTALLA 3: RESULTADOS ---------- */
   .filter-row{display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap; align-items:center;}
@@ -298,18 +302,19 @@
   .chip-dot{width:8px;height:8px;border-radius:50%;}
 
   .table-card{padding:0; overflow:hidden;}
-  table{width:100%; border-collapse:collapse;}
+  .table-scroll{overflow-x:auto;}
+  table{width:100%; border-collapse:collapse; min-width:1080px;}
   thead th{
     text-align:left; font-size:11.5px; font-weight:700; text-transform:uppercase;
     letter-spacing:0.03em; color:var(--gray-500);
-    padding:14px 20px; background:var(--gray-50);
+    padding:14px 18px; background:var(--gray-50);
     border-bottom:1px solid var(--gray-100);
     cursor:pointer; user-select:none; white-space:nowrap;
   }
   thead th:hover{color:var(--blue-900);}
   tbody td{
-    padding:14px 20px; font-size:13.5px; color:var(--gray-900);
-    border-bottom:1px solid var(--gray-100);
+    padding:14px 18px; font-size:13.5px; color:var(--gray-900);
+    border-bottom:1px solid var(--gray-100); white-space:nowrap;
   }
   tbody tr:last-child td{border-bottom:none;}
   tbody tr{transition:background .12s ease;}
@@ -336,10 +341,7 @@
   .legend-dot{width:9px;height:9px;border-radius:50%;}
 
   /* ---------- PANTALLA 4: MÉTRICAS ---------- */
-  .metric-card{
-    padding:24px; position:relative; overflow:hidden;
-  }
-  .metric-card .ring-bg{position:absolute; right:-20px; top:-20px; width:110px; height:110px; border-radius:50%; opacity:0.06;}
+  .metric-card{padding:24px; position:relative; overflow:hidden;}
   .metric-value{font-size:34px; font-weight:800; font-family:'Inter Tight'; color:var(--gray-900); margin:10px 0 4px;}
   .metric-label{font-size:13px; font-weight:600; color:var(--gray-500);}
   .metric-bar-bg{width:100%; height:6px; border-radius:4px; background:var(--gray-100); margin-top:14px; overflow:hidden;}
@@ -360,7 +362,7 @@
   .insight-card h3{font-size:16px; font-weight:800; margin:8px 0 12px;}
   .insight-list{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;}
   .insight-list li{
-    display:flex; gap:10px; font-size:13px; line-height:1.55; color:#e4eefa;
+    display:flex; gap:10px; font-size:13px; line-height:1.55; color:#e6dcf9;
     padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.12);
   }
   .insight-list li:last-child{border-bottom:none; padding-bottom:0;}
@@ -382,15 +384,13 @@
     .grid-3{grid-template-columns:repeat(2,1fr);}
     .grid-2, .config-shell, .fi-shell{grid-template-columns:1fr;}
     .hero-banner{flex-direction:column; align-items:flex-start;}
+    .field-2col{grid-template-columns:1fr;}
   }
   @media (max-width:640px){
     .grid-4, .grid-3{grid-template-columns:1fr 1fr;}
     .topbar-inner{padding:12px 16px;}
     .view{padding:24px 16px 60px;}
     .brand small{display:none;}
-    table{font-size:12px;}
-    thead th, tbody td{padding:11px 12px;}
-    .score-bar-bg{width:44px;}
   }
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
@@ -427,10 +427,10 @@
     <div class="hero-copy">
       <span class="eyebrow">Objetivo del modelo</span>
       <h1>Anticipar qué clientes van a irse, antes de que se vayan.</h1>
-      <p>Un modelo de churn entrenado sobre la experiencia postventa de Despegar, para que Marketing y Customer Experience prioricen la retención donde más duele: reclamos lentos, sin resolver y mal atendidos.</p>
+      <p>Despegar acumula 1.2/5 en Trustpilot sobre más de 42.000 opiniones. La brecha no está en el producto, sino en la postventa: atención automatizada, reclamos sin resolver y demoras frente a incumplimientos de proveedores. Este modelo estima la probabilidad de abandono de cada cliente según su experiencia postventa y percepción de marca, para que Customer Experience y Marketing prioricen la retención.</p>
     </div>
     <div class="hero-score">
-      <div class="val">57%</div>
+      <div class="val">63%</div>
       <div class="lbl">Score de churn promedio</div>
     </div>
   </div>
@@ -441,7 +441,7 @@
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="#d1473e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="kpi-value">1.2 / 5</div>
-      <div class="kpi-label">Calificación en Trustpilot</div>
+      <div class="kpi-label">Trustpilot (+42.000 opiniones)</div>
     </div>
     <div class="card">
       <div class="kpi-icon" style="background:var(--blue-100);">
@@ -469,29 +469,29 @@
   <div class="grid grid-3">
     <div class="card summary-card">
       <span class="tag">Problema de negocio</span>
-      <h3>Postventa deficiente, no producto</h3>
-      <p>La caída reputacional no viene de precios ni de la oferta de vuelos y hoteles: viene de reclamos atendidos por bots, sin resolución y sin tiempos de respuesta razonables. Cada reclamo mal cerrado es un cliente que no vuelve a comprar.</p>
+      <h3>La brecha está en la postventa</h3>
+      <p>La caída reputacional no viene de la oferta de vuelos, hoteles o paquetes: viene de una atención automatizada sin soporte humano oportuno, reclamos que tardan semanas en resolverse y falta de respuesta ante incumplimientos de proveedores.</p>
     </div>
     <div class="card summary-card">
       <span class="tag">Variable objetivo</span>
       <h3>Churn — Sí / No</h3>
-      <p>Clasificación binaria: probabilidad de que el cliente no vuelva a comprar en Despegar tras su última interacción de postventa, expresada como score de 0% a 100%.</p>
+      <p>Clasificación binaria: probabilidad de que el cliente no vuelva a comprar en Despegar según su experiencia postventa y percepción de marca, expresada como score de 0% a 100%.</p>
     </div>
     <div class="card summary-card">
       <span class="tag">Variables predictoras (10)</span>
       <h3>Toda la huella del reclamo</h3>
-      <p>Desde el canal de contacto hasta el CSAT final, el modelo combina señales operativas y de percepción del cliente.</p>
+      <p>Desde los tiempos de atención hasta el NPS y la calificación otorgada, el modelo combina señales operativas y de percepción del cliente.</p>
       <div class="var-chip-row">
-        <span class="var-chip">Tipo de reclamo</span>
-        <span class="var-chip">Canal</span>
-        <span class="var-chip">T. respuesta</span>
-        <span class="var-chip">T. resolución</span>
-        <span class="var-chip">Estado</span>
+        <span class="var-chip">Tiempo de respuesta</span>
+        <span class="var-chip">Tiempo de resolución</span>
+        <span class="var-chip">Estado del reclamo</span>
+        <span class="var-chip">Canal de atención</span>
         <span class="var-chip">CSAT</span>
-        <span class="var-chip">Nº reclamos</span>
-        <span class="var-chip">Tipo cliente</span>
-        <span class="var-chip">Calificación</span>
-        <span class="var-chip">Servicio</span>
+        <span class="var-chip">NPS</span>
+        <span class="var-chip">Nº de reclamos</span>
+        <span class="var-chip">Tipo de cliente</span>
+        <span class="var-chip">Calificación otorgada</span>
+        <span class="var-chip">Servicio contratado</span>
       </div>
     </div>
   </div>
@@ -503,44 +503,50 @@
     <div>
       <span class="eyebrow">Simulación</span>
       <h1>Configurá el escenario del modelo</h1>
-      <p class="sub">Ajustá los umbrales operativos para simular sobre qué clientes se dispararían alertas de retención.</p>
+      <p class="sub">Ajustá las variables de entrada del modelo. Los cuatro desplegables filtran además la tabla de la Pantalla 3.</p>
     </div>
   </div>
 
   <div class="config-shell">
     <div>
       <div class="card config-card">
-        <div class="card-title" style="margin-bottom:18px;">Umbrales operativos</div>
+        <div class="card-title" style="margin-bottom:18px;">Variables de entrada (sliders)</div>
 
         <div class="field">
-          <div class="field-label">Tiempo máximo de respuesta <span class="value-pill" id="lbl-resp">24 h</span></div>
-          <input type="range" id="rng-resp" min="1" max="72" value="24">
+          <div class="field-label">Tiempo de primera respuesta <span class="value-pill" id="lbl-resp">48 h</span></div>
+          <input type="range" id="rng-resp" min="1" max="150" value="48">
         </div>
 
         <div class="field">
-          <div class="field-label">Tiempo máximo de resolución <span class="value-pill" id="lbl-resol">72 h</span></div>
-          <input type="range" id="rng-resol" min="4" max="168" value="72">
+          <div class="field-label">Tiempo de resolución <span class="value-pill" id="lbl-resol">150 h</span></div>
+          <input type="range" id="rng-resol" min="4" max="400" value="150">
         </div>
 
         <div class="field">
-          <div class="field-label">Nivel mínimo de satisfacción (CSAT) <span class="value-pill" id="lbl-csat">3 / 5</span></div>
+          <div class="field-label">CSAT (satisfacción) <span class="value-pill" id="lbl-csat">3 / 5</span></div>
           <input type="range" id="rng-csat" min="1" max="5" value="3">
+        </div>
+
+        <div class="field">
+          <div class="field-label">NPS (Net Promoter Score) <span class="value-pill" id="lbl-nps">5 / 10</span></div>
+          <input type="range" id="rng-nps" min="0" max="10" value="5">
+        </div>
+
+        <div class="field">
+          <div class="field-label">Calificación otorgada por el cliente <span class="value-pill" id="lbl-calif">3 / 5</span></div>
+          <input type="range" id="rng-calif" min="1" max="5" value="3">
         </div>
       </div>
 
       <div class="card config-card">
-        <div class="card-title" style="margin-bottom:18px;">Segmentación</div>
-        <div class="grid grid-3" style="gap:16px;">
+        <div class="card-title" style="margin-bottom:18px;">Segmentación y volumen de reclamos</div>
+        <div class="field-2col" style="margin-bottom:16px;">
           <div class="field" style="margin-bottom:0;">
-            <div class="field-label">Tipo de reclamo</div>
-            <select id="sel-reclamo">
+            <div class="field-label">Estado del reclamo</div>
+            <select id="sel-estado">
               <option value="Todos">Todos</option>
-              <option value="Reembolso">Reembolso</option>
-              <option value="Cambio de vuelo">Cambio de vuelo</option>
-              <option value="Cancelación">Cancelación</option>
-              <option value="Cobro duplicado">Cobro duplicado</option>
-              <option value="Equipaje">Equipaje</option>
-              <option value="Overbooking">Overbooking</option>
+              <option value="Resuelto">Resuelto</option>
+              <option value="Pendiente">Pendiente</option>
             </select>
           </div>
           <div class="field" style="margin-bottom:0;">
@@ -554,6 +560,8 @@
               <option value="Redes sociales">Redes sociales</option>
             </select>
           </div>
+        </div>
+        <div class="field-2col">
           <div class="field" style="margin-bottom:0;">
             <div class="field-label">Tipo de cliente</div>
             <select id="sel-tipo">
@@ -562,29 +570,43 @@
               <option value="Recurrente">Recurrente</option>
             </select>
           </div>
+          <div class="field" style="margin-bottom:0;">
+            <div class="field-label">Tipo de reclamo</div>
+            <select id="sel-reclamo">
+              <option value="Todos">Todos</option>
+              <option value="Reembolso">Reembolso</option>
+              <option value="Cambio de pasaje">Cambio de pasaje</option>
+              <option value="Cancelación">Cancelación</option>
+              <option value="Inconveniente en destino">Inconveniente en destino</option>
+              <option value="Otros">Otros</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <button class="run-btn" id="btn-run">
         <svg viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#fff"/></svg>
-        Ejecutar modelo
+        Run Model
       </button>
     </div>
 
     <div>
       <div class="params-echo">
         <div class="card-title">Parámetros seleccionados</div>
-        <div class="echo-row"><span class="echo-key">Tiempo máx. respuesta</span><span class="echo-val" id="echo-resp">24 h</span></div>
-        <div class="echo-row"><span class="echo-key">Tiempo máx. resolución</span><span class="echo-val" id="echo-resol">72 h</span></div>
-        <div class="echo-row"><span class="echo-key">CSAT mínimo</span><span class="echo-val" id="echo-csat">3 / 5</span></div>
-        <div class="echo-row"><span class="echo-key">Tipo de reclamo</span><span class="echo-val" id="echo-reclamo">Todos</span></div>
+        <div class="echo-row"><span class="echo-key">Tiempo primera respuesta</span><span class="echo-val" id="echo-resp">48 h</span></div>
+        <div class="echo-row"><span class="echo-key">Tiempo de resolución</span><span class="echo-val" id="echo-resol">150 h</span></div>
+        <div class="echo-row"><span class="echo-key">CSAT</span><span class="echo-val" id="echo-csat">3 / 5</span></div>
+        <div class="echo-row"><span class="echo-key">NPS</span><span class="echo-val" id="echo-nps">5 / 10</span></div>
+        <div class="echo-row"><span class="echo-key">Calificación otorgada</span><span class="echo-val" id="echo-calif">3 / 5</span></div>
+        <div class="echo-row"><span class="echo-key">Estado del reclamo</span><span class="echo-val" id="echo-estado">Todos</span></div>
         <div class="echo-row"><span class="echo-key">Canal de atención</span><span class="echo-val" id="echo-canal">Todos</span></div>
         <div class="echo-row"><span class="echo-key">Tipo de cliente</span><span class="echo-val" id="echo-tipo">Todos</span></div>
+        <div class="echo-row"><span class="echo-key">Tipo de reclamo</span><span class="echo-val" id="echo-reclamo">Todos</span></div>
         <div class="echo-row"><span class="echo-key">Estado del modelo</span><span class="echo-val" id="echo-status" style="color:#7fd8a4;">En espera</span></div>
       </div>
       <div class="run-note">
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 16v-4M12 8h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z" stroke="#4C1D95" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>"Ejecutar modelo" re-calcula la tabla de resultados y resalta, en la pantalla 3, a los clientes que superan los umbrales definidos acá.</span>
+        <span><b>Run Model</b> registra los 9 parámetros como entrada del modelo y aplica los cuatro filtros categóricos (Estado, Canal, Tipo de cliente, Tipo de reclamo) sobre la tabla de la Pantalla 3.</span>
       </div>
     </div>
   </div>
@@ -613,6 +635,7 @@
   </div>
 
   <div class="card table-card">
+    <div class="table-scroll">
     <table>
       <thead>
         <tr>
@@ -623,6 +646,7 @@
           <th>T. resolución</th>
           <th>Estado</th>
           <th>CSAT</th>
+          <th>NPS</th>
           <th>Nº reclamos</th>
           <th>Tipo cliente</th>
           <th data-sort>Score churn ↕</th>
@@ -631,6 +655,7 @@
       </thead>
       <tbody id="results-body"></tbody>
     </table>
+    </div>
   </div>
 </section>
 
@@ -687,7 +712,7 @@
     <div>
       <span class="eyebrow">Explicabilidad</span>
       <h1>¿Qué variables mueven la predicción?</h1>
-      <p class="sub">Importancia relativa de cada variable en la probabilidad de abandono, ordenada de mayor a menor.</p>
+      <p class="sub">Importancia relativa de cada una de las 10 variables en la probabilidad de abandono, ordenada de mayor a menor.</p>
     </div>
   </div>
 
@@ -695,28 +720,28 @@
     <div class="card chart-card">
       <div class="card-title" style="margin-bottom:4px;">Feature importance del modelo</div>
       <div class="chart-sub" style="margin-bottom:16px;">Importancia relativa (%) de cada variable, de mayor a menor.</div>
-      <div class="chart-wrap" style="height:340px;"><canvas id="chartFeatureImportance"></canvas></div>
+      <div class="chart-wrap" style="height:380px;"><canvas id="chartFeatureImportance"></canvas></div>
     </div>
 
     <div class="insight-card">
       <div class="card-title">Interpretación automática</div>
-      <h3>Los tiempos y la percepción del cliente dominan el churn</h3>
+      <h3>Tiempos, satisfacción y lealtad dominan el churn</h3>
       <ul class="insight-list">
         <li>
           <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.8"/></svg></span>
-          <span><b>Tiempo de resolución (24%)</b> y <b>CSAT (21%)</b> concentran casi la mitad del peso del modelo: los reclamos que tardan en cerrarse y dejan mala satisfacción son el principal disparador de abandono.</span>
+          <span><b>Tiempo de resolución (22%)</b> y <b>CSAT (18%)</b> concentran el mayor peso: los reclamos que tardan semanas en cerrarse y dejan mala satisfacción son el principal disparador de abandono.</span>
         </li>
         <li>
           <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" fill="#fff"/></svg></span>
-          <span><b>Tiempo de respuesta (18%)</b> y <b>número de reclamos (12%)</b> muestran que la lentitud inicial y la reincidencia son señales tempranas de fuga, incluso antes de resolver el caso.</span>
+          <span><b>NPS (16%)</b> y <b>tiempo de respuesta (13%)</b> muestran que la falta de lealtad y la lentitud inicial anticipan la fuga incluso antes de que el reclamo se resuelva.</span>
         </li>
         <li>
           <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <span><b>Estado del reclamo (9%)</b> y <b>tipo de cliente (7%)</b> pesan menos, pero refuerzan el patrón: los clientes nuevos con reclamos pendientes son el segmento más frágil.</span>
+          <span><b>Número de reclamos (10%)</b> y <b>estado del reclamo (8%)</b> refuerzan el patrón: la reincidencia y los casos aún pendientes son señales tempranas de riesgo.</span>
         </li>
         <li>
           <span class="ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4 5.7 20.8 8 13.6 2 9.2h7.6L12 2z" fill="#fff"/></svg></span>
-          <span><b>Canal y tipo de reclamo (5% y 4%)</b> influyen poco por sí solos: el canal importa cuando se combina con tiempos de respuesta altos, no de forma aislada.</span>
+          <span><b>Calificación, tipo de cliente, servicio y canal (6% + 4% + 2% + 1%)</b> aportan matices, pero pesan poco por sí solos: importan cuando se combinan con tiempos altos, no de forma aislada.</span>
         </li>
       </ul>
     </div>
@@ -726,29 +751,40 @@
 <footer>Despegar · Motor de Retención Predictiva — Modelo XGBoost sobre datos de postventa simulados con fines demostrativos.</footer>
 
 <script>
-/* ================= DATA ================= */
+/* ================= DATA =================
+   Los 10 registros parten de la muestra real provista (user_id, tipo_usuario,
+   tipo_reclamo, tiempo_respuesta_horas, tiempo_resolucion_horas,
+   estado_reclamo, CSAT). Los tiempos originales (p. ej. 5207, 12833) se
+   interpretaron como MINUTOS y se convirtieron a horas (÷60), ya que
+   tomados como horas literales implicarían esperas de más de 200 días,
+   inviable para el caso de uso. NPS, Calificación otorgada, Servicio
+   contratado, Canal de atención y Número de reclamos no venían en la
+   muestra: se simulan de forma coherente con CSAT/estado/tiempos.
+*/
 const clientes = [
-  {id:"Cliente 001", reclamo:"Reembolso", canal:"Chat", tResp:48, tResol:120, estado:"Pendiente", csat:2, nReclamos:3, tipoCliente:"Nuevo", calificacion:1, servicio:"Vuelo", score:91},
-  {id:"Cliente 002", reclamo:"Cambio de vuelo", canal:"Email", tResp:12, tResol:24, estado:"Resuelto", csat:4, nReclamos:1, tipoCliente:"Recurrente", calificacion:4, servicio:"Vuelo", score:18},
-  {id:"Cliente 003", reclamo:"Cobro duplicado", canal:"Teléfono", tResp:6, tResol:18, estado:"Resuelto", csat:5, nReclamos:1, tipoCliente:"Recurrente", calificacion:5, servicio:"Hotel", score:9},
-  {id:"Cliente 004", reclamo:"Cancelación", canal:"WhatsApp", tResp:60, tResol:144, estado:"Pendiente", csat:1, nReclamos:4, tipoCliente:"Nuevo", calificacion:1, servicio:"Paquete", score:96},
-  {id:"Cliente 005", reclamo:"Equipaje", canal:"Chat", tResp:30, tResol:60, estado:"En proceso", csat:3, nReclamos:2, tipoCliente:"Nuevo", calificacion:2, servicio:"Vuelo", score:63},
-  {id:"Cliente 006", reclamo:"Overbooking", canal:"Redes sociales", tResp:52, tResol:96, estado:"Pendiente", csat:2, nReclamos:2, tipoCliente:"Recurrente", calificacion:2, servicio:"Vuelo", score:78},
-  {id:"Cliente 007", reclamo:"Reembolso", canal:"Email", tResp:20, tResol:40, estado:"Resuelto", csat:4, nReclamos:1, tipoCliente:"Recurrente", calificacion:4, servicio:"Paquete", score:27},
-  {id:"Cliente 008", reclamo:"Cambio de vuelo", canal:"Teléfono", tResp:8, tResol:14, estado:"Resuelto", csat:5, nReclamos:1, tipoCliente:"Nuevo", calificacion:5, servicio:"Vuelo", score:14},
-  {id:"Cliente 009", reclamo:"Cobro duplicado", canal:"Chat", tResp:40, tResol:80, estado:"En proceso", csat:2, nReclamos:3, tipoCliente:"Nuevo", calificacion:2, servicio:"Hotel", score:72},
-  {id:"Cliente 010", reclamo:"Cancelación", canal:"WhatsApp", tResp:15, tResol:30, estado:"Resuelto", csat:4, nReclamos:1, tipoCliente:"Recurrente", calificacion:4, servicio:"Paquete", score:22},
+  {id:"Cliente 9022", reclamo:"Reembolso",                canal:"Chat",           tResp:87,  tResol:214, estado:"Resuelto",  csat:1, nps:1, nReclamos:3, tipoCliente:"Nuevo",      calificacion:1, servicio:"Vuelo",   score:89},
+  {id:"Cliente 1481", reclamo:"Cambio de pasaje",          canal:"Email",          tResp:105, tResol:22,  estado:"Pendiente", csat:1, nps:2, nReclamos:2, tipoCliente:"Nuevo",      calificacion:1, servicio:"Vuelo",   score:82},
+  {id:"Cliente 2044", reclamo:"Otros",                     canal:"Teléfono",       tResp:16,  tResol:88,  estado:"Resuelto",  csat:4, nps:7, nReclamos:1, tipoCliente:"Recurrente", calificacion:4, servicio:"Hotel",   score:15},
+  {id:"Cliente 1115", reclamo:"Reembolso",                 canal:"WhatsApp",       tResp:18,  tResol:295, estado:"Resuelto",  csat:2, nps:3, nReclamos:2, tipoCliente:"Nuevo",      calificacion:2, servicio:"Vuelo",   score:66},
+  {id:"Cliente 7886", reclamo:"Cancelación",                canal:"Redes sociales", tResp:3,   tResol:27,  estado:"Pendiente", csat:4, nps:5, nReclamos:1, tipoCliente:"Nuevo",      calificacion:3, servicio:"Paquete", score:46},
+  {id:"Cliente 1337", reclamo:"Cambio de pasaje",          canal:"Chat",           tResp:142, tResol:375, estado:"Resuelto",  csat:1, nps:1, nReclamos:4, tipoCliente:"Recurrente", calificacion:1, servicio:"Vuelo",   score:97},
+  {id:"Cliente 5966", reclamo:"Reembolso",                 canal:"Email",          tResp:58,  tResol:231, estado:"Resuelto",  csat:2, nps:3, nReclamos:2, tipoCliente:"Nuevo",      calificacion:2, servicio:"Paquete", score:64},
+  {id:"Cliente 4890", reclamo:"Cancelación",                canal:"Teléfono",       tResp:75,  tResol:139, estado:"Pendiente", csat:1, nps:1, nReclamos:3, tipoCliente:"Nuevo",      calificacion:1, servicio:"Vuelo",   score:88},
+  {id:"Cliente 7280", reclamo:"Cambio de pasaje",          canal:"WhatsApp",       tResp:6,   tResol:108, estado:"Resuelto",  csat:3, nps:6, nReclamos:1, tipoCliente:"Nuevo",      calificacion:3, servicio:"Hotel",   score:34},
+  {id:"Cliente 6478", reclamo:"Inconveniente en destino",  canal:"Redes sociales", tResp:54,  tResol:120, estado:"Resuelto",  csat:3, nps:5, nReclamos:1, tipoCliente:"Nuevo",      calificacion:3, servicio:"Paquete", score:52},
 ];
 
 const featureImportance = [
-  {name:"Tiempo de resolución", pct:24},
-  {name:"CSAT", pct:21},
-  {name:"Tiempo de respuesta", pct:18},
-  {name:"Número de reclamos", pct:12},
-  {name:"Estado del reclamo", pct:9},
-  {name:"Tipo de cliente", pct:7},
-  {name:"Canal de atención", pct:5},
-  {name:"Tipo de reclamo", pct:4},
+  {name:"Tiempo de resolución", pct:22},
+  {name:"CSAT", pct:18},
+  {name:"NPS", pct:16},
+  {name:"Tiempo de respuesta", pct:13},
+  {name:"Número de reclamos", pct:10},
+  {name:"Estado del reclamo", pct:8},
+  {name:"Calificación otorgada", pct:6},
+  {name:"Tipo de cliente", pct:4},
+  {name:"Servicio contratado", pct:2},
+  {name:"Canal de atención", pct:1},
 ];
 
 /* ================= NAV ================= */
@@ -759,10 +795,9 @@ function activateView(name){
   views.forEach(v=>v.classList.remove('active'));
   document.getElementById('view-'+name).classList.add('active');
 
-  // Chart.js mide el tamaño real del <canvas> en el momento en que se crea.
-  // Mientras la pestaña está oculta (display:none) ese tamaño es 0×0, así
-  // que al activarla forzamos resize() para que el gráfico se redibuje
-  // ya con las dimensiones reales y visibles del contenedor.
+  // Chart.js mide el <canvas> en el momento de crearse. Si su pestaña
+  // estaba oculta (display:none), medía 0x0 y nunca se recalculaba solo.
+  // Por eso forzamos resize() al activar la pestaña correspondiente.
   if(name === 'metricas'){
     requestAnimationFrame(()=>{
       if(window.chartConfusion) window.chartConfusion.resize();
@@ -783,43 +818,48 @@ tabs.forEach(tab=>{
 const rngResp = document.getElementById('rng-resp');
 const rngResol = document.getElementById('rng-resol');
 const rngCsat = document.getElementById('rng-csat');
-const selReclamo = document.getElementById('sel-reclamo');
+const rngNps = document.getElementById('rng-nps');
+const rngCalif = document.getElementById('rng-calif');
+const selEstado = document.getElementById('sel-estado');
 const selCanal = document.getElementById('sel-canal');
 const selTipo = document.getElementById('sel-tipo');
+const selReclamo = document.getElementById('sel-reclamo');
 
 function paintRange(el){
   const min = +el.min, max = +el.max, val = +el.value;
   const pct = ((val-min)/(max-min))*100;
   el.style.backgroundSize = pct + '% 100%';
 }
-[rngResp, rngResol, rngCsat].forEach(paintRange);
+[rngResp, rngResol, rngCsat, rngNps, rngCalif].forEach(paintRange);
 
 function syncLabels(){
   document.getElementById('lbl-resp').textContent = rngResp.value + ' h';
   document.getElementById('lbl-resol').textContent = rngResol.value + ' h';
   document.getElementById('lbl-csat').textContent = rngCsat.value + ' / 5';
-  paintRange(rngResp); paintRange(rngResol); paintRange(rngCsat);
+  document.getElementById('lbl-nps').textContent = rngNps.value + ' / 10';
+  document.getElementById('lbl-calif').textContent = rngCalif.value + ' / 5';
+  [rngResp, rngResol, rngCsat, rngNps, rngCalif].forEach(paintRange);
 }
-[rngResp, rngResol, rngCsat].forEach(el=> el.addEventListener('input', syncLabels));
+[rngResp, rngResol, rngCsat, rngNps, rngCalif].forEach(el=> el.addEventListener('input', syncLabels));
 syncLabels();
 
 document.getElementById('btn-run').addEventListener('click', ()=>{
   document.getElementById('echo-resp').textContent = rngResp.value + ' h';
   document.getElementById('echo-resol').textContent = rngResol.value + ' h';
   document.getElementById('echo-csat').textContent = rngCsat.value + ' / 5';
-  document.getElementById('echo-reclamo').textContent = selReclamo.value;
+  document.getElementById('echo-nps').textContent = rngNps.value + ' / 10';
+  document.getElementById('echo-calif').textContent = rngCalif.value + ' / 5';
+  document.getElementById('echo-estado').textContent = selEstado.value;
   document.getElementById('echo-canal').textContent = selCanal.value;
   document.getElementById('echo-tipo').textContent = selTipo.value;
+  document.getElementById('echo-reclamo').textContent = selReclamo.value;
   const statusEl = document.getElementById('echo-status');
   statusEl.textContent = 'Ejecutado ✓';
   statusEl.style.color = '#7fd8a4';
 
-  // Cada clic en "Ejecutar modelo" representa una consulta nueva sobre el
-  // arreglo original `clientes`. Si el usuario había usado antes un chip
-  // de riesgo (🟢🟡🔴) en la pantalla de Resultados, ese filtro quedaba
-  // "pegado" en `currentRiskFilter`: al combinarse con un canal que no
-  // tiene clientes en ese nivel de riesgo, la tabla se veía vacía sin
-  // ninguna explicación. Por eso reseteamos el filtro de riesgo acá.
+  // Cada corrida es una consulta nueva: reseteamos el filtro de riesgo
+  // (chips 🟢🟡🔴) para que uno de una sesión anterior no vacíe la tabla
+  // al combinarse con los nuevos filtros categóricos.
   currentRiskFilter = 'all';
   document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
   document.querySelector('.chip-btn[data-risk="all"]').classList.add('active');
@@ -838,31 +878,21 @@ function riskInfo(score){
 let currentRiskFilter = 'all';
 let currentSort = {key:'score', dir:'desc'};
 
-// Única función de filtrado de la tabla de resultados.
-// Regla clave: SIEMPRE parte de una copia fresca del arreglo original
-// `clientes` (clientes.slice()), nunca de `rows` de una llamada anterior
-// ni de un resultado ya filtrado. Además lee los <select> directamente
-// del DOM en cada ejecución, en vez de recibir los valores por parámetro:
-// así se elimina cualquier posibilidad de que un llamador (botón "Ejecutar
-// modelo", chip de riesgo, click de orden) pase datos desactualizados o
-// se olvide de pasar alguno de los tres filtros.
+// Única función de filtrado: SIEMPRE parte de una copia fresca del
+// arreglo original `clientes`, nunca de un resultado previamente filtrado.
+// Lee los <select> directamente del DOM en cada llamada.
 function applyFilters(){
-  const reclamoVal = selReclamo.value; // valores exactos de los <option>: "Todos", "Reembolso", ...
-  const canalVal   = selCanal.value;   // "Todos", "Chat", "Email", "Teléfono", "WhatsApp", "Redes sociales"
-  const tipoVal    = selTipo.value;    // "Todos", "Nuevo", "Recurrente"
+  const estadoVal  = selEstado.value;  // "Todos" | "Resuelto" | "Pendiente"
+  const canalVal   = selCanal.value;   // "Todos" | "Chat" | "Email" | "Teléfono" | "WhatsApp" | "Redes sociales"
+  const tipoVal    = selTipo.value;    // "Todos" | "Nuevo" | "Recurrente"
+  const reclamoVal = selReclamo.value; // "Todos" | "Reembolso" | "Cambio de pasaje" | "Cancelación" | "Inconveniente en destino" | "Otros"
 
-  // Copia nueva del arreglo original en cada llamada.
   let rows = clientes.slice();
 
-  if(reclamoVal !== 'Todos'){
-    rows = rows.filter(r => r.reclamo === reclamoVal);
-  }
-  if(canalVal !== 'Todos'){
-    rows = rows.filter(r => r.canal === canalVal);
-  }
-  if(tipoVal !== 'Todos'){
-    rows = rows.filter(r => r.tipoCliente === tipoVal);
-  }
+  if(estadoVal !== 'Todos')   rows = rows.filter(r => r.estado === estadoVal);
+  if(canalVal !== 'Todos')    rows = rows.filter(r => r.canal === canalVal);
+  if(tipoVal !== 'Todos')     rows = rows.filter(r => r.tipoCliente === tipoVal);
+  if(reclamoVal !== 'Todos')  rows = rows.filter(r => r.reclamo === reclamoVal);
 
   if(currentRiskFilter !== 'all'){
     rows = rows.filter(r=>{
@@ -880,14 +910,12 @@ function renderTable(rows){
   const tbody = document.getElementById('results-body');
   tbody.innerHTML = '';
 
-  // Si la combinación de filtros no deja ningún cliente, mostramos un
-  // mensaje explícito en vez de una tabla vacía sin explicación.
   if(rows.length === 0){
     tbody.innerHTML = `
       <tr>
-        <td colspan="11" style="text-align:center; padding:32px 20px; color:var(--gray-500); font-size:13.5px;">
+        <td colspan="12" style="text-align:center; padding:32px 20px; color:var(--gray-500); font-size:13.5px; white-space:normal;">
           No hay clientes que cumplan con los filtros seleccionados.<br>
-          Probá quitar el filtro de riesgo (🟢🟡🔴) o elegir otra combinación de canal / tipo de reclamo / tipo de cliente.
+          Probá quitar el filtro de riesgo (🟢🟡🔴) o elegir otra combinación de Estado / Canal / Tipo de cliente / Tipo de reclamo.
         </td>
       </tr>`;
     return;
@@ -904,6 +932,7 @@ function renderTable(rows){
       <td>${r.tResol} h</td>
       <td>${r.estado}</td>
       <td>${r.csat} / 5</td>
+      <td>${r.nps} / 10</td>
       <td>${r.nReclamos}</td>
       <td>${r.tipoCliente}</td>
       <td>
@@ -916,9 +945,6 @@ function renderTable(rows){
     `;
     tbody.appendChild(tr);
   });
-  // (Se eliminó la línea que vaciaba el texto del chip "Todos" en cada
-  // render: no tenía ningún propósito y rompía la etiqueta "Todos (10)"
-  // apenas se pintaba la tabla por primera vez.)
 }
 
 document.querySelectorAll('.chip-btn').forEach(btn=>{
@@ -935,7 +961,6 @@ document.querySelector('th[data-sort]').addEventListener('click', ()=>{
   applyFilters();
 });
 
-// init labels for filter chips with counts
 function initChipCounts(){
   const counts = {all: clientes.length, low:0, med:0, high:0};
   clientes.forEach(c=>{
@@ -952,33 +977,9 @@ initChipCounts();
 applyFilters();
 
 /* ================= PANTALLA 4: MÉTRICAS (Chart.js) ================= */
-/*
-  CAUSA RAÍZ DEL BUG ORIGINAL:
-  Los <canvas> de "chartConfusion" y "chartRoc" viven dentro de
-  <section class="view" id="view-metricas">, y esa sección tiene
-  "display:none" hasta que el usuario hace clic en la pestaña "Métricas"
-  (ver la clase .view / .view.active en el CSS).
-
-  Cuando new Chart(...) se ejecuta al cargar la página, la Pantalla 4
-  todavía está oculta, así que su contenedor mide 0×0 px. Con la opción
-  "maintainAspectRatio:false" Chart.js confía en el tamaño real del
-  contenedor para dibujar: como ese tamaño es 0, el gráfico se crea
-  "invisible" y, a diferencia de un <img>, Chart.js NO vuelve a medir el
-  contenedor automáticamente cuando después se hace visible con
-  display:block. Por eso solo se veían los títulos y nunca las gráficas,
-  aunque el código de new Chart(...) fuera correcto y no arrojara ningún
-  error en consola.
-
-  SOLUCIÓN: guardamos las instancias de Chart en variables accesibles
-  (window.chartConfusion / window.chartRoc / window.chartFeatureImportance)
-  y llamamos a .resize() manualmente justo después de que la pestaña
-  correspondiente pasa a estar visible (ver activateView() más arriba).
-*/
-
 Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.color = '#7c8797';
 
-// -------- Matriz de confusión (barras apiladas) --------
 const confusionCanvas = document.getElementById('chartConfusion');
 if(confusionCanvas){
   window.chartConfusion = new Chart(confusionCanvas, {
@@ -1003,11 +1004,8 @@ if(confusionCanvas){
       }
     }
   });
-} else {
-  console.error('No se encontró el <canvas id="chartConfusion">. Revisá que el id coincida en el HTML.');
 }
 
-// -------- Curva ROC --------
 const rocCanvas = document.getElementById('chartRoc');
 if(rocCanvas){
   const rocPoints = [
@@ -1046,15 +1044,12 @@ if(rocCanvas){
       }
     }
   });
-} else {
-  console.error('No se encontró el <canvas id="chartRoc">. Revisá que el id coincida en el HTML.');
 }
 
 /* ================= PANTALLA 5: FEATURE IMPORTANCE (Chart.js, indexAxis:'y') ================= */
 const fiCanvas = document.getElementById('chartFeatureImportance');
 if(fiCanvas){
-  // Colores en gradiente morado, la variable con más peso queda más oscura
-  const fiColors = ['#4C1D95','#5B21B6','#6D28D9','#7C3AED','#8B5CF6','#A78BFA','#C4B5FD','#DDD6FE'];
+  const fiColors = ['#2E1065','#3F1687','#4C1D95','#5B21B6','#6D28D9','#7C3AED','#8B5CF6','#A78BFA','#C4B5FD','#DDD6FE'];
 
   window.chartFeatureImportance = new Chart(fiCanvas, {
     type: 'bar',
@@ -1070,7 +1065,7 @@ if(fiCanvas){
       }]
     },
     options: {
-      indexAxis: 'y', // gráfico de barras HORIZONTAL, tal como exige la guía
+      indexAxis: 'y',
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
@@ -1079,17 +1074,15 @@ if(fiCanvas){
       },
       scales: {
         x: {
-          min:0, max:26,
+          min:0, max:24,
           grid:{ color:'#eef1f5' },
           title:{ display:true, text:'Importancia relativa (%)', font:{ size:11.5 } },
           ticks:{ callback:(v)=> v + '%' }
         },
-        y: { grid:{ display:false }, ticks:{ font:{ size:12, weight:'600' } } }
+        y: { grid:{ display:false }, ticks:{ font:{ size:11.5, weight:'600' } } }
       }
     }
   });
-} else {
-  console.error('No se encontró el <canvas id="chartFeatureImportance">. Revisá que el id coincida en el HTML.');
 }
 </script>
 </body>
